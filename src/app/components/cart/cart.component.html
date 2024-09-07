@@ -1,0 +1,43 @@
+<section class="w-75 mx-auto bg-main-light my-5 p-5">
+    <h2 class="fw-bold text-main">Shop Cart</h2>
+    <h4 class="pb-5 fw-bold">Total price : <span class="text-main">{{cartDetails.totalCartPrice}} EGP</span> </h4>
+    @if (cartDetails.totalCartPrice==0) {
+        <h3 class="fw-bold ">Your cart is empty</h3>
+  
+        
+    }
+    @else {
+        @for (item of cartDetails.products; track item.product._id) {
+            <div class="row   border-bottom py-4 ">
+                <div class="col-md-2 ">
+                    <div>
+                        <img [src]="item.product.imageCover" [alt]="item.product.title" class="w-100">
+                    </div>
+                </div>
+                <div class="col-md-10 my-auto d-flex align-items-center justify-content-between">
+                    <div>
+    <h3 class="h4 fw-bold">{{item.product.title}}</h3>
+    <p class="fw-bold">Price : <span class="text-main">{{item.price}} EGP</span></p>
+    <button class=" btn-main" (click)="deleteProduct(item.product._id)"> Remove Product</button>
+    <!-- <span class="text-danger cr"><i class="fa-solid fa-trash"></i> Remove Product</span> -->
+                    </div>
+                    <div class="">
+                        <span class="cr " (click)="updateCount(item.product._id,item.count + 1)"><i class="fa-solid fa-circle-plus"></i></span>
+                        <span class="mx-2 fw-bold text-main">{{item.count}}</span>
+                        <span class="cr " (click)="updateCount(item.product._id,item.count - 1)"><i class="fa-solid fa-circle-minus"></i></span>
+    
+                    </div>
+                </div>
+    
+            </div>
+        }
+      
+    }
+
+    <div class="d-flex justify-content-between align-items-center">
+        
+        <button class=" btn-main   mt-5  text-center fw-bold" (click)="clearCart()">Clear Cart</button>
+        <button class=" btn-main   mt-5  text-center fw-bold" [routerLink]="['/orders',cartDetails._id]" >check out</button>
+        
+        </div>
+</section>

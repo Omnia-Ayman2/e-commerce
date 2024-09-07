@@ -1,0 +1,94 @@
+<section class="mb-5">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top mb-5">
+    <div class="container">
+      <a class="navbar-brand " routerLink="home">
+        <div class="d-flex justify-content-center align-items-center ms-">
+          <i class="fa-solid fa-cart-shopping logo-icon"></i>
+          <h1 class="h3 fw-bolder">Fresh Cart</h1>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse "
+        id="navbarNav"
+      >
+        <div class="ms-auto">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="home"
+                routerLinkActive="active-link"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="products"
+                routerLinkActive="active-link"
+                >products</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="categories"
+                routerLinkActive="active-link"
+                >categories</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="brands"
+                routerLinkActive="active-link"
+                >brands</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="cart"
+                routerLinkActive="active-link"
+                >cart</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLink="wishList"
+                routerLinkActive="active-link"
+                >wishList</a
+              >
+            </li>
+           
+          </ul>
+       
+        </div>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link position-relative "
+              routerLink="cart"
+             
+              >          <i class="fa-solid fa-cart-shopping  fa-2xl "></i>
+              </a
+            >
+          <span class="position-absolute top-0 ms-4 text-main fw-bold">{{countNum}}</span></ul>
+        <div>
+          
+        </div>
+        <a
+class="nav-link cr fw-bolder ms-5"
+(click)="_AuthApiService.logOut()"  >SignOut</a>
+ 
+      </div>
+    </div>
+  </nav>
+</section>

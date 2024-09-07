@@ -1,0 +1,51 @@
+@if (detailsProduct) {
+    <section class="m-5">
+        <!-- <h1 class="text-main m-5">More about product</h1> -->
+        <div class="row my-3 align-items-center ">
+            <div class="col-3 ">
+                <div>
+                    <owl-carousel-o [options]="customOptionsOne">
+    
+                        @for (product of detailsProduct.images; track $index) {
+                            <ng-template carouselSlide >
+                                <img [src]="detailsProduct.images[$index]" [alt]="detailsProduct.title" class="w-100">
+                              </ng-template>
+                        }
+                          </owl-carousel-o>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="my-5">
+                    <h3 class="fw-bolder text-center p-3">{{detailsProduct.title}} ( {{detailsProduct.category.name}} )</h3>
+                    <p class="fw-bold text-center">{{detailsProduct.description.split(" ",5).join(" ")}}</p>
+                    <div class="d-flex justify-content-evenly align-items-center text-center">
+                        <span class="">{{detailsProduct.price}}EGP</span>
+                        <div class="ps-5">
+                            <i class="fa-solid fa-star rating-color" ></i>
+                        <span >{{detailsProduct.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-evenly align-items-center btn-add">
+                        <button class="btn-main cr mt-2 px-5 "  (click)="addToCart(detailsProduct._id)">+ Add to cart     
+                            <!-- <i class="fa-solid fa-cart-shopping logo-icon text-white"></i> -->
+                        </button>
+                        @if (isAdded.includes(detailsProduct._id)){ 
+                            <div class=" border border-2  p-2 shadow    " (click)="deleteProduct(detailsProduct._id)"  > 
+                        
+                                <a class=" cr " ><i class="fa-solid fa-heart fa-2xl text-danger" ></i></a>
+                                </div> 
+                         } 
+                            @if (!isAdded.includes(detailsProduct._id)) { 
+                                <div class=" border border-2   p-2 shadow  " (click)="addToWishlist(detailsProduct._id)"  > 
+                        
+                                    <a class=" cr " ><i class="fa-solid fa-heart fa-2xl " ></i></a>
+                                    </div>        }     
+                                    </div>
+               
+                      
+                </div>
+            </div>
+    
+        </div>
+    </section>
+}

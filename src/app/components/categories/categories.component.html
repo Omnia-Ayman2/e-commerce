@@ -1,0 +1,15 @@
+<section class="my-5">
+    <div class="container my-5">
+        <div class="row g-4">
+            @for (cat of cattList; track cat._id) {
+            <div class="col-md-4">
+<div class="product shadow">
+    
+        <img [src]="cat.image" [alt]="cat.name" class="w-100 mb-2" height="400px">
+        <h3 class="text-main text-center fw-bold m-2">{{cat.name}}</h3>
+    
+</div>
+            </div>}
+        </div>
+    </div>
+</section>

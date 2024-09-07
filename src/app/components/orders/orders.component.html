@@ -1,0 +1,19 @@
+<section class="w-75 mx-auto my-5 shadow p-5
+">
+    <h1>shippingAddress</h1>
+    <form [formGroup]="order" (ngSubmit)="orderSubmit()">
+        <div>
+            <label for="details">details</label>
+            <textarea formControlName="details" id="details" class="form-control"></textarea>
+        </div>
+        <div>
+            <label for="phone">phone</label>
+            <input formControlName="phone" id="phone" type="tel" class="form-control">
+        </div>
+        <div>
+            <label for="city">city</label>
+            <input formControlName="city" id="city" type="tel" class="form-control">
+        </div>
+        <button class="btn-main mt-3" type="submit">Pay Now</button>
+    </form>
+</section>

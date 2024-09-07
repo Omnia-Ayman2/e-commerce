@@ -1,0 +1,89 @@
+<section class="m-5 ">
+    <div class="row g-0">
+        <div class="col-md-10">
+            <owl-carousel-o [options]="customOptionsTwo" >
+             
+                <ng-template carouselSlide>
+                    <img src="./assets/images/slider.1.png" class="w-100" height="300px" alt="product">
+                </ng-template>     
+                <ng-template carouselSlide>
+                    <img src="./assets/images/slider.2.jpg" class="w-100" height="300px" alt="product">
+                </ng-template>    
+                 <ng-template carouselSlide>
+                    <img src="./assets/images/slider.3.png" class="w-100" height="300px" alt="product">
+                </ng-template>  
+              </owl-carousel-o>
+        </div>
+        <div class="col-md-2">
+            <img src="./assets/images/img.1.jpg" class="w-100" height="150px" alt="product">
+            <img src="./assets/images/img.2.jpg" class="w-100" height="150px" alt="product">
+
+
+        </div>
+    </div>
+</section>
+
+<section class="m-5 shadow">
+    <owl-carousel-o [options]="customOptionsOne">
+
+    @for (cat of catList; track cat._id) {
+        <ng-template carouselSlide >
+            <img [src]="cat.image" [alt]="cat.name" height="250px">
+            <h3 class="text-main fw-bold h5 text-center">{{cat.name}}</h3>
+          </ng-template>
+    }
+      </owl-carousel-o>
+</section>
+
+
+<section class="m-5">
+    <h1 class="text-main m-3">Recommended for you</h1>
+    <input [(ngModel)]="text" type="search" placeholder="Search here" class="form-control w-75 mx-auto my-4 shadow">
+
+    <div class="container">
+        <div class="row g-4">
+@for (product of productList.slice(0,16)|search :text ; track product._id) {
+    <div class="col-md-4 col-lg-3">
+        <div class="product p-2 shadow position-relative" >
+        
+ @if (isAdded.includes(product._id)){ 
+            <div class=" border border-2  top-0 end-0 p-2 shadow position-absolute " (click)="deleteProduct(product._id)"  > 
+
+                <a class=" cr " ><i class="fa-solid fa-heart fa-2xl text-danger" ></i></a>
+                </div> 
+         }
+          @if (!isAdded.includes(product._id)) { 
+            <div class=" border border-2  top-0 end-0 p-2 shadow position-absolute " (click)="addToWishlist(product._id)"  > 
+
+                <a class=" cr " ><i class="fa-solid fa-heart fa-2xl " ></i></a>
+                </div> 
+         }        
+          <div  [routerLink]="['/details',product._id]">
+            <div class="">
+                <img class="w-100 h-75" [src]="product.imageCover" [alt]="product.title">
+          
+ </div>
+            <h3 class="h6 fw-bold pt-2 text-main">{{product.category.name}}</h3>
+            <h4 class="h6 fw-bold">{{product.title.split(" ",2).join(" ")}}</h4>
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="">{{product.price}}EGP</span>
+                <div>
+                    <i class="fa-solid fa-star rating-color" ></i>
+                <span>{{product.ratingsAverage}}</span>
+                </div>
+            </div>
+          </div>
+          
+            <div class="d-flex justify-content-center align-items-center btn-add">
+                <button class="btn-main cr mt-2 px-5 " (click)="addToCart(product._id)" >+ Add to cart  
+                </button>
+
+    
+         
+           </div>
+        </div>
+    </div>
+}
+        </div>
+    </div>
+</section>

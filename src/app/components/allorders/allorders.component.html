@@ -1,0 +1,42 @@
+<section class="w-75 shadow mx-auto my-5 p-5">
+    <h1 class="text-main text-center">All orders</h1>
+    @for (order of orderDetails; track order._id) {
+     <div class="border-bottom border-2">
+        @for (item of order.cartItems; track item._id) {
+            <div>
+              <div class="row py-2">
+                  <div class="col-md-2">
+                      <img [src]="item.product.imageCover" [alt]="item.product.title" class="w-100">
+                  </div>
+                  <div class="col-md-10 my-auto">
+                      <h3>{{item.product.title.split(" ",2).join(" ")}}</h3>
+  <p>count: <span class="text-main fw-bold">{{item.count}}</span></p>
+  <p>price: <span class="text-main fw-bold">{{item.price}}</span></p>
+  
+                  </div>
+                  
+              </div>
+              
+            </div>
+          }
+          <div>
+            <h2 class="text-main">Order Details</h2>
+            <p class="fw-bold">
+                
+paymentMethodType
+: <span class="text-main fw-bold">{{order.paymentMethodType}}
+            </span></p>
+  <p class="fw-bold">TotaOrderPrice: <span class="text-main fw-bold">{{order.totalOrderPrice}}</span></p>
+
+            <p class="fw-bold">IsDelivered: <span class="text-main fw-bold">{{order.isDelivered}}
+            </span></p>
+            <p class="fw-bold">
+                IsPaid: <span class="text-main fw-bold">{{order.isPaid}}
+            </span></p>
+          </div>
+  
+     </div>
+    }
+
+    
+</section>
